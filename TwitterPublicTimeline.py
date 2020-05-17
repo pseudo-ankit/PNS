@@ -7,6 +7,7 @@ from nltk.tokenize import WordPunctTokenizer
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
+import json
 
 tok = WordPunctTokenizer()
 CURR_DIR = os.getcwd()	
@@ -34,6 +35,15 @@ negations_dic = {"isn't":"is not", "aren't":"are not", "wasn't":"was not", "were
                 "mustn't":"must not"}
 neg_pattern = re.compile(r'\b(' + '|'.join(negations_dic.keys()) + r')\b')
 
+try:
+	f = open('handles.json', 'r')
+	handles = json.load(f)
+except:
+	print("Something went wrong when reading from the file: {}".format('handles.json'))
+finally:
+	f.close()
+
+
 def tweet_cleaner(text):
     soup = BeautifulSoup(text, 'html.parser')
     souped = soup.get_text()
@@ -51,13 +61,21 @@ def tweet_cleaner(text):
 
 
 tweets = []
-since_id = None
-#for handle in handles:
-for tweet in tweepy.Cursor(api.user_timeline, screen_name = handles[0], since_id = 1261332025807642624).items(5):
-		#tweets.append([tweet.created_at, tweet_cleaner(tweet.text)])
-		if since_id is None:
-			since_id = tweet.id
-		tweets.append([tweet.text])
-print(len(tweets), since_id)
-#tweets_processed = pd.DataFrame(data = tweets, columns = ['created_at','tweet'])
-#tweets_processed.to_csv(os.path.join(DATA_PATH, 'Tweets.csv'))
+for handle in handles['handles']:
+	for tweet in tweepy.Cursor(api.user_timeline, screen_name = handle['screen_name'], since_id = handle['since_id'], tweet_mode='extended').items(2):
+			tweets.append([tweet.created_at, tweet_cleaner(tweet.full_text)])
+			handle['since_id'] = tweet.id
+
+
+try:
+	f = open('handles.json', 'w')
+	handles = json.dump(handles, f, indent = 2)
+except:
+	print("Something went wrong when writing to the file: {}".format('handles.json'))
+finally:
+	f.close()
+
+
+tweets_processed = pd.DataFrame(data = tweets, columns = ['created_at','tweet'])
+print(tweets_processed.shape)
+tweets_processed.to_csv(os.path.join(DATA_PATH, 'Tweets.csv'))

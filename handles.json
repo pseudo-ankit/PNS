@@ -1,0 +1,76 @@
+{
+  "handles": [
+    {
+      "screen_name": "cnnbrk",
+      "since_id": null
+    },
+    {
+      "screen_name": "nytimes",
+      "since_id": null
+    },
+    {
+      "screen_name": "bbcbreaking",
+      "since_id": null
+    },
+    {
+      "screen_name": "BreakingNews",
+      "since_id": null
+    },
+    {
+      "screen_name": "reuters",
+      "since_id": null
+    },
+    {
+      "screen_name": "WSJbreakingnews",
+      "since_id": null
+    },
+    {
+      "screen_name": "ndtv",
+      "since_id": null
+    },
+    {
+      "screen_name": "TOISportsNews",
+      "since_id": null
+    },
+    {
+      "screen_name": "IndiaToday",
+      "since_id": null
+    },
+    {
+      "screen_name": "TOIIndiaNews",
+      "since_id": null
+    },
+    {
+      "screen_name": "ESPNIndia",
+      "since_id": null
+    },
+    {
+      "screen_name": "espn",
+      "since_id": null
+    },
+    {
+      "screen_name": "ESPNcricinfo",
+      "since_id": null
+    },
+    {
+      "screen_name": "TechCrunch",
+      "since_id": null
+    },
+    {
+      "screen_name": "thenextweb",
+      "since_id": null
+    },
+    {
+      "screen_name": "TechRepublic",
+      "since_id": null
+    },
+    {
+      "screen_name": "ZDNet",
+      "since_id": null
+    },
+    {
+      "screen_name": "httweets",
+      "since_id": null
+    }
+  ]
+}
