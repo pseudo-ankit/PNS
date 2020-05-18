@@ -16,13 +16,29 @@ top_headlines = newsapi.get_top_headlines(category='sports',
                                           language='en',
                                           country='in')
 
+
+pat1 = r'@[A-Za-z0-9_]+'
+pat2 = r'https?://[^ ]+'
+combined_pat = r'|'.join((pat1, pat2))
+www_pat = r'www.[^ ]+'
+negations_dic = {"isn't":"is not", "aren't":"are not", "wasn't":"was not", "weren't":"were not",
+                "haven't":"have not","hasn't":"has not","hadn't":"had not","won't":"will not",
+                "wouldn't":"would not", "don't":"do not", "doesn't":"does not","didn't":"did not",
+                "can't":"can not","couldn't":"could not","shouldn't":"should not","mightn't":"might not",
+                "mustn't":"must not"}
+neg_pattern = re.compile(r'\b(' + '|'.join(negations_dic.keys()) + r')\b')
+
 def text_cleaner(text):
 	if text:
-		text = re.sub( r'\[[^\]]*\]', " ", text)
-		text = re.sub('[^A-Za-z]', " ", text)
-		text = text.lower()
-		words = [x for x  in tok.tokenize(text) if len(x) > 1]
-		return (" ".join(words)).strip()
+		stripped = re.sub(combined_pat, '', text)
+	    stripped = re.sub(www_pat, '', stripped)
+	    lower_case = stripped.lower()
+	    neg_handled = neg_pattern.sub(lambda x: negations_dic[x.group()], lower_case)
+	    letters_only = re.sub("[^a-zA-Z]", " ", neg_handled)
+	    letters_only.replace()
+	    words = [x for x  in tok.tokenize(letters_only) if len(x) > 1]
+	    return (" ".join(words)).strip()
+
 	else:
 		return None
 

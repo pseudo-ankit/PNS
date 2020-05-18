@@ -2,13 +2,22 @@ import tweepy
 import sys, os
 from tweepy.streaming import StreamListener
 import credentials
-from TwitterHandles import handles
 from nltk.tokenize import WordPunctTokenizer
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
 import json
+from datetime import date
+from tqdm import tqdm
+from sys import stdout
+import warnings
+import time
+# from TwitterHandles import handles
+start_time = time.time()
+warnings.filterwarnings("ignore", category=UserWarning, module='bs4') # handlk
 
+today = date.today()
+today = today.strftime("%b-%d-%Y")
 tok = WordPunctTokenizer()
 CURR_DIR = os.getcwd()	
 DATA_PATH = os.path.join(CURR_DIR, 'Data')
@@ -44,7 +53,7 @@ finally:
 	f.close()
 
 
-def tweet_cleaner(text):
+def tweet_cleaner(text, screen_name):
     soup = BeautifulSoup(text, 'html.parser')
     souped = soup.get_text()
     try:
@@ -56,14 +65,20 @@ def tweet_cleaner(text):
     lower_case = stripped.lower()
     neg_handled = neg_pattern.sub(lambda x: negations_dic[x.group()], lower_case)
     letters_only = re.sub("[^a-zA-Z]", " ", neg_handled)
+    letters_only = letters_only.replace(screen_name, " ")
     words = [x for x  in tok.tokenize(letters_only) if len(x) > 1]
     return (" ".join(words)).strip()
 
-
+number_tweets = 3000
 tweets = []
-for handle in handles['handles']:
-	for tweet in tweepy.Cursor(api.user_timeline, screen_name = handle['screen_name'], since_id = handle['since_id'], tweet_mode='extended').items(2):
-			tweets.append([tweet.created_at, tweet_cleaner(tweet.full_text)])
+print("Collecting tweets .........")
+for handle in tqdm(handles['handles'], total = len(handles['handles']), desc = "handles:  "):
+
+	for tweet in tqdm(tweepy.Cursor(api.user_timeline, screen_name = handle['screen_name'], 
+								since_id = handle['since_id'], tweet_mode='extended').items(number_tweets), 
+								total = number_tweets, desc='from '+str(handle['screen_name'])+' : ', file = stdout):
+
+			tweets.append([tweet.created_at, tweet_cleaner(tweet.full_text, handle['screen_name'])])
 			handle['since_id'] = tweet.id
 
 
@@ -77,5 +92,16 @@ finally:
 
 
 tweets_processed = pd.DataFrame(data = tweets, columns = ['created_at','tweet'])
-print(tweets_processed.shape)
-tweets_processed.to_csv(os.path.join(DATA_PATH, 'Tweets.csv'))
+print()
+print("Before Droping NULL values: "+str(tweets_processed.shape))
+print()
+
+tweets_processed.dropna(axis=0, inplace=True)
+tweets_processed.reset_index(drop=True, inplace=True)
+tweets_processed.to_csv(os.path.join(DATA_PATH, 'Tweets-{}.csv'.format(today)))
+
+print("Tweets saved to : "+os.path.join(DATA_PATH, 'Tweets-{}.csv'.format(today)))
+print()
+print("Time for collecting and processing tweets : --- %s seconds ---" % (time.time() - start_time))
+print()
+print("After Droping NULL values: "+str(tweets_processed.shape))
