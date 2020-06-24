@@ -1,0 +1,76 @@
+{
+  "handles": [
+    {
+      "screen_name": "cnnbrk",
+      "since_id": 1190251459746684928
+    },
+    {
+      "screen_name": "nytimes",
+      "since_id": 1262548573666902026
+    },
+    {
+      "screen_name": "bbcbreaking",
+      "since_id": 940214761018548225
+    },
+    {
+      "screen_name": "BreakingNews",
+      "since_id": 1044025951095586817
+    },
+    {
+      "screen_name": "reuters",
+      "since_id": 1271921547624828928
+    },
+    {
+      "screen_name": "WSJbreakingnews",
+      "since_id": 456242624026796033
+    },
+    {
+      "screen_name": "ndtv",
+      "since_id": 1269949862155399170
+    },
+    {
+      "screen_name": "TOISportsNews",
+      "since_id": 1263816919368347649
+    },
+    {
+      "screen_name": "IndiaToday",
+      "since_id": 1271024316046389251
+    },
+    {
+      "screen_name": "TOIIndiaNews",
+      "since_id": 1262513327067951104
+    },
+    {
+      "screen_name": "ESPNIndia",
+      "since_id": 1195729488375619591
+    },
+    {
+      "screen_name": "espn",
+      "since_id": 1231365646262292480
+    },
+    {
+      "screen_name": "ESPNcricinfo",
+      "since_id": 1244557769945911296
+    },
+    {
+      "screen_name": "TechCrunch",
+      "since_id": 1245391129794826241
+    },
+    {
+      "screen_name": "thenextweb",
+      "since_id": 1253125209621741569
+    },
+    {
+      "screen_name": "TechRepublic",
+      "since_id": 1261507927032160256
+    },
+    {
+      "screen_name": "ZDNet",
+      "since_id": 1265206037822337028
+    },
+    {
+      "screen_name": "httweets",
+      "since_id": 1272333407381381120
+    }
+  ]
+}
