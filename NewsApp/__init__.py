@@ -10,4 +10,5 @@ db = SQLAlchemy(app)
 # db.create_all()
 # migrate = Migrate(app, db)
 
-from NewsApp import views, models # , stream_to_db
+
+from NewsApp import models, views, stream_to_db
