@@ -61,7 +61,7 @@ def home():
     final_list = []
 
     for i in range(24):
-        temp = "2020-07-02T12:48:41Z" #articles[i][0].publishedAt
+        temp = articles[i][0].publishedAt #"2020-07-02T12:48:41Z" 
         temp = temp[0:10] +" "+ temp[11:19]
         diff = datetime.strptime(now, datetimeFormat)\
                 - datetime.strptime(temp, datetimeFormat)
