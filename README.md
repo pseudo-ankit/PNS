@@ -63,11 +63,8 @@ $ cd PNS
 $ pip install -r requirements.txt
 
 # Downloading nltk stopwords and punctuations
-$ nltk.download('punkt')
-
-$ nltk.download('stopwords')
-
-$ nltk.download('wordnet')
+$ cd DataCollection
+$ python download.py
 ```
 After cloning the repo the file structure should be like below.
 ```bash
@@ -142,8 +139,18 @@ $ python collect_data.py
 Now inside the NewsApp directory run below scripts
 
 ```bash
+$ flask shell
+# creating the DataBase
+>> db.create_all()
+>> exit()
+```
+
+Now you are all set to run the server
+```bash
 $ flask run
 ```
+
+
 After running the above command your flask server should be up and running. Now navigate to [http://127.0.0.1:5000/](#) in your browser. You will be redirected to login/signup page.
 
 ## License
