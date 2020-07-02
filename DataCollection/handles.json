@@ -2,75 +2,75 @@
   "handles": [
     {
       "screen_name": "cnnbrk",
-      "since_id": 1190251459746684928
+      "since_id": 1196891501755817987
     },
     {
       "screen_name": "nytimes",
-      "since_id": 1262548573666902026
+      "since_id": 1266227792796147712
     },
     {
       "screen_name": "bbcbreaking",
-      "since_id": 940214761018548225
+      "since_id": 941655402663596032
     },
     {
       "screen_name": "BreakingNews",
-      "since_id": 1044025951095586817
+      "since_id": 1049323522500284416
     },
     {
       "screen_name": "reuters",
-      "since_id": 1271921547624828928
+      "since_id": 1275513958263218176
     },
     {
       "screen_name": "WSJbreakingnews",
-      "since_id": 456242624026796033
+      "since_id": 456250748578193408
     },
     {
       "screen_name": "ndtv",
-      "since_id": 1269949862155399170
+      "since_id": 1273564814682423297
     },
     {
       "screen_name": "TOISportsNews",
-      "since_id": 1263816919368347649
+      "since_id": 1268509338663976961
     },
     {
       "screen_name": "IndiaToday",
-      "since_id": 1271024316046389251
+      "since_id": 1274960104295546880
     },
     {
       "screen_name": "TOIIndiaNews",
-      "since_id": 1262513327067951104
+      "since_id": 1266290756391563272
     },
     {
       "screen_name": "ESPNIndia",
-      "since_id": 1195729488375619591
+      "since_id": 1199233223391371266
     },
     {
       "screen_name": "espn",
-      "since_id": 1231365646262292480
+      "since_id": 1233925837084229632
     },
     {
       "screen_name": "ESPNcricinfo",
-      "since_id": 1244557769945911296
+      "since_id": 1248094729994006529
     },
     {
       "screen_name": "TechCrunch",
-      "since_id": 1245391129794826241
+      "since_id": 1249945242352189441
     },
     {
       "screen_name": "thenextweb",
-      "since_id": 1253125209621741569
+      "since_id": 1256970799128461312
     },
     {
       "screen_name": "TechRepublic",
-      "since_id": 1261507927032160256
+      "since_id": 1265337297320513537
     },
     {
       "screen_name": "ZDNet",
-      "since_id": 1265206037822337028
+      "since_id": 1269147005730897922
     },
     {
       "screen_name": "httweets",
-      "since_id": 1272333407381381120
+      "since_id": 1275838998129172480
     }
   ]
 }

@@ -3,24 +3,28 @@
 
 	{% for article in articles %}
 	  <div class="col-md-4">
+	  	
 	    <div class="card mb-4 box-shadow">
 
 	    
-	      <img class="card-img-top" src={{ article.imageurl }} >
+	      <img class="card-img-top" src={{ article[0].imageurl }} width="100" height="220"/ onerror="this.src='{{not_found_image}}';">
 	      <div class="card-body">
 	        <p class="card-text">
-	        <a href= {{ article.url }} >
-	         {{ article.title }} 
+	        <a href= {{ article[0].url }} >
+	         {{ article[0].title }} 
 	    	</a>
 	    	</p>
 
 	    	<p class="card-text">
-	         {{ article.category }} 
+	    		{{ article[1].seconds//3600  }} hours ago
+	    	<!-- <span id="datetime"></span> -->
 	    	</p>
+	    	
 
 	      </div>
 	      
 	    </div>
+	    
 	  </div>
 	  {% endfor %}
 	  

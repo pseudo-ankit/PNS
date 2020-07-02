@@ -1,4 +1,6 @@
 import json
+import os
+from setting import CURR_DIR
 from TwitterHandles import handles
 # f  = open('handles.json', 'r')
 # data = json.load(f)
@@ -6,7 +8,7 @@ from TwitterHandles import handles
 # for handle in data:
 # 	print('name: '+handle+'value: '+str(data[handle]))
 
-f = open('handles.json', 'w')
+f = open(os.path.join(CURR_DIR, 'handles.json'), 'w')
 data = {"handles":[]}
 
 for handle in handles:

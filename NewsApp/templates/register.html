@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.business.label(class="form-control-label") }}:<br>
+       				{% if form.business.errors %}
+                        {{ form.business(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.business.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.business(min=1, max=5, oninput="outputUpdateBusiness(value)") }}
+                        <output for="business" id="selected-business">{{ form.business.data }}</output>
+                    {% endif %}
+                    </p>
+    			</div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.entertainment.label(class="form-control-label") }}:<br>
+       				{{ form.entertainment(min=1, max=5, oninput="outputUpdateEntertainment(value)") }}
+       				<output for="entertainment" id="selected-entertainment">{{ form.entertainment.data }}</output>
+    				</p>
+    			</div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.health.label(class="form-control-label") }}:<br>
+       				{{ form.health(min=1, max=5, oninput="outputUpdateHealth(value)") }}
+       				<output for="health" id="selected-health">{{ form.health.data }}</output>
+    				</p>
+    			</div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.science.label(class="form-control-label") }}:<br>
+       				{{ form.science(min=1, max=5, oninput="outputUpdateScience(value)") }}
+       				<output for="science" id="selected-science">{{ form.science.data }}</output>
+    				</p>
+    			</div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.sports.label(class="form-control-label") }}:<br>
+       				{{ form.sports(min=1, max=5, oninput="outputUpdateSports(value)") }}
+       				<output for="sports" id="selected-sports">{{ form.sports.data }}</output>
+    				</p>
+    			</div>
+
+    			<div class="form-group">
+    				<p>
+       				{{ form.technology.label(class="form-control-label") }}:<br>
+       				{{ form.technology(min=1, max=5, oninput="outputUpdateTechnology(value)") }}
+       				<output for="technology" id="selected-technology">{{ form.technology.data }}</output>
+    				</p>
+    			</div>
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+    </div>
+{% endblock content %}

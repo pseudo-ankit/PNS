@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,49 +14,105 @@
   <!-- Bootstrap core CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
+  <link rel="stylesheet" text="text/css" href="{{ url_for('static', filename = 'css/main.css')}}">
+  
+<script>
+    function outputUpdateBusiness(business) {
+    document.querySelector('#selected-business').value = business;
+  }
+  </script>
+  <script>
+    function outputUpdateEntertainment(entertainment) {
+    document.querySelector('#selected-entertainment').value = entertainment;
+  }
+  </script>
+  <script>
+    function outputUpdateHealth(health) {
+    document.querySelector('#selected-health').value = health;
+  }
+  </script>
+  <script>
+    function outputUpdateScience(science) {
+    document.querySelector('#selected-science').value = science;
+  }
+  </script>
+  <script>
+    function outputUpdateSports(sports) {
+    document.querySelector('#selected-sports').value = sports;
+  }
+  </script>
+  <script>
+    function outputUpdateTechnology(technology) {
+    document.querySelector('#selected-technology').value = technology;
+  }
+  </script>
+
   <!-- Custom styles for this template -->
 </head>
 
+
+
+
 <body>
 
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">NewsApp</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand mr-4" href="/">NewsApp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+                  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="business">Business</a>
-          <a class="nav-item nav-link" href="sports">Sports</a>
-          <a class="nav-item nav-link" href="health">Health</a>
-          <a class="nav-item nav-link" href="science">Science</a>
-          <a class="nav-item nav-link" href="technology">Technology</a>
-          <a class="nav-item nav-link" href="entertainment">Entertainment</a>
+          {% if current_user.is_authenticated %}
+          <a class="nav-item nav-link" href="{{url_for('logout')}}">Log Out</a>
+          <a class="nav-item nav-link" href="{{url_for('profile')}}">Profile</a>
+          <a class="nav-item nav-link" href="{{url_for('business')}}">Business</a>
+          <a class="nav-item nav-link" href="{{url_for('sports')}}">Sports</a>
+          <a class="nav-item nav-link" href="{{url_for('health')}}">Health</a>
+          <a class="nav-item nav-link" href="{{url_for('science')}}">Science</a>
+          <a class="nav-item nav-link" href="{{url_for('technology')}}">Technology</a>
+          <a class="nav-item nav-link" href="{{url_for('entertainment')}}">Entertainment</a>
+          {% else %}
+          <a class="nav-item nav-link" href="{{url_for('login')}}">Log In</a>
+          <a class="nav-item nav-link" href="{{url_for('register')}}">Sign Up</a>
+          {% endif %}
         </div>
       </div>
     </nav>
   </header>
 
-  <main role="main">
-    <section class="jumbotron text-center">
+ <main role="main" class="container">
+
+    <!-- <section class="jumbotron text-center">
       <div class="container">
-        <!-- <h1 class="jumbotron-heading">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
+        <h1 class="jumbotron-heading">Album example</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
       </div>
-    </section>
+    </section> -->
 
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
-
-        {% block content %}
-        {% endblock  %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock  %}
+          <!-- <div class="container">
+        </div> -->
       </div>
       </div>
     </div>
 
   </main>
+ 
+ 
 
   <!-- <footer class="text-muted">
     <div class="container">

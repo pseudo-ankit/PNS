@@ -1,4 +1,9 @@
-from NewsApp import db
+from NewsApp import db, login_manager
+from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(userId):
+    return UserDetails.query.get(int(userId))
 
 class ArticleDetails(db.Model):
 
@@ -30,29 +35,30 @@ class ArticleProfile(db.Model):
     def __repr__(self):
         return '<Id %r>' % self.articleId
 
-#
-# class UserDetails(db.Model):
-#
-#     userId = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(20), unique=True, nullable=False)
-#     email = db.Column(db.String(120), unique=True, nullable=False)
-#     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-#     password = db.Column(db.String(60), nullable=False)
-#     portfolio = db.relationship('UserPortfolio', backref='details', uselist=False)
-#
-#     def __repr__(self):
-#         return '<User: %r>' % self.username
-#
-#
-# class UserPortfolio(db.Model):
-#
-#     business = db.Column(db.Float, nullable=False)
-#     entertainment = db.Column(db.Float, nullable=False)
-#     health = db.Column(db.Float, nullable=False)
-#     science = db.Column(db.Float, nullable=False)
-#     sports = db.Column(db.Float, nullable=False)
-#     technology = db.Column(db.Float, nullable=False)
-#     userId = db.Column(db.Integer, db.ForeignKey('userdetails.userId'), nullable=False)
-#
-#     def __repr__(self):
-#         return '<Id %r>' % self.userId
+
+class UserDetails(db.Model, UserMixin):
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    profile = db.relationship('UserProfile', backref='details', uselist=False)
+
+    def __repr__(self):
+        return '<User: %r>' % self.username
+
+
+class UserProfile(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    business = db.Column(db.Float, nullable=False)
+    entertainment = db.Column(db.Float, nullable=False)
+    health = db.Column(db.Float, nullable=False)
+    science = db.Column(db.Float, nullable=False)
+    sports = db.Column(db.Float, nullable=False)
+    technology = db.Column(db.Float, nullable=False)
+    userId = db.Column(db.Integer, db.ForeignKey('user_details.id'), nullable=False)
+
+    def __repr__(self):
+        return '<Id %r>' % self.userId

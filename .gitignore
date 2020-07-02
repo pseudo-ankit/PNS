@@ -28,6 +28,10 @@ DataCollection/preprocess_method.py
 DataCollection/store.txt
 DataCollection/test.py
 DataCollection/text.txt
+NewsApp/main.py
+NewsApp/pata_nhi.csv
+NewsApp/templates/dump.html
+setup.py
 
 # C extensions
 *.so
