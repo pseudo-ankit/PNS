@@ -1,10 +1,10 @@
-# from Top_Headlines import CollectArtilces
-# obj = CollectArtilces(page_size=100) # MAX LIMIT 100
-# obj.collect()
-#
-# from TwitterPublicTimeline import CollectTweets
-# obj1 = CollectTweets(number_tweets=3000) # MAX LIMIT 3000
-# obj1.collect()
+from Top_Headlines import CollectArtilces
+obj = CollectArtilces(page_size=100) # MAX LIMIT 100
+obj.collect()
+
+from TwitterPublicTimeline import CollectTweets
+obj1 = CollectTweets(number_tweets=3000) # MAX LIMIT 3000
+obj1.collect()
 
 # print(obj.articles_file_name)
 # print(obj1.tweets_file_name)
