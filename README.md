@@ -20,10 +20,6 @@
 * [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Setup](#setup)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
-
 
 ## About The Project
 
@@ -153,15 +149,6 @@ $ flask run
 
 After running the above command your flask server should be up and running. Now navigate to [http://127.0.0.1:5000/](#) in your browser. You will be redirected to login/signup page.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
 
 

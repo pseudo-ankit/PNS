@@ -1,12 +1,4 @@
 {
-  "details": [
-    "Articles_Details-Jun-30-2020.csv",
-    "Articles_Details.csv",
-    "Articles_Details-Jul-01-2020.csv"
-  ],
-  "profile": [
-    "Articles_Profile-Jun-30-2020.csv",
-    "Articles_Profile.csv",
-    "Articles_Profile-Jul-01-2020.csv"
-  ]
+  "details": [],
+  "profile": []
 }

@@ -31,6 +31,7 @@ DataCollection/text.txt
 NewsApp/main.py
 NewsApp/pata_nhi.csv
 NewsApp/templates/dump.html
+NewsApp\static\bootstrap-4.0.0
 setup.py
 
 # C extensions
