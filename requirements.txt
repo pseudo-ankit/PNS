@@ -32,7 +32,7 @@ mccabe==0.6.1
 mysqlclient==1.4.6
 newsapi-python==0.2.6
 nltk==3.5
-numpy==1.19.0
+numpy==1.22.0
 oauthlib==3.1.0
 pandas==1.0.5
 parso==0.7.0
